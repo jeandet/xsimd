@@ -1,0 +1,3 @@
+option('ENABLE_XTL_COMPLEX', type: 'boolean', value: false, description: 'enables support for xcomplex defined in xtl')
+option('BUILD_TESTS', type: 'boolean', value: false, description: 'xsimd test suite')
+option('ENABLE_FALLBACK', type: 'boolean', value: false, description: 'build tests/benchmarks with fallback implementation')
