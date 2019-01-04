@@ -4,7 +4,7 @@ xsim_dependencies = []
 xsimd_cpp_arg = []
 
 if get_option('ENABLE_XTL_COMPLEX')
-  xsim_dependencies+=[dependency('xtl', version:'>=0.4.11')]
+  xsim_dependencies+=[dependency('xtl', version:'>=0.4.11', fallback : ['xtl', 'xtl_dep'])]
   xsimd_cpp_arg = ['-DXSIMD_ENABLE_XTL_COMPLEX']
 endif
 
@@ -91,6 +91,12 @@ install_headers([
  'include/xsimd/types/xsimd_avx512_double.hpp',
  'include/xsimd/types/xsimd_types_include.hpp'],
  subdir:'xsimd'
+)
+
+pkgc = import('pkgconfig')
+pkgc.generate(name: 'xsimd',
+    version: meson.project_version(),
+    description: 'Modern, portable C++ wrappers for SIMD intrinsics and parallelized, optimized math implementations (SSE, AVX, NEON, AVX512)'
 )
 
 
